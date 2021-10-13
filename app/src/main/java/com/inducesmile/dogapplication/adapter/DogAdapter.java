@@ -27,6 +27,8 @@ public class DogAdapter extends RecyclerView.Adapter<DogAdapter.ViewHolder>{
     private final List<Dog> dogList;
     private final Handler loadIMGHandler = new Handler();
 
+    private static ClickListener clickListener;
+
     public DogAdapter(List<Dog> data) { this.dogList = data; }
 
     @NonNull
@@ -44,9 +46,9 @@ public class DogAdapter extends RecyclerView.Adapter<DogAdapter.ViewHolder>{
 //        holder.dImage.setImageDrawable(LoadImageFromWebOperations(d.getImageURL()));
         new FetchImage(d.getImageURL(),holder.dImage,loadIMGHandler).start();
         holder.dTitle.setText(d.getName());
-        holder.dOrigin.setText(d.getOrigin()+" - "+d.getBredFor()+" - "+d.getBreedGroup());
+//        holder.dOrigin.setText(d.getOrigin()+" - "+d.getBredFor()+" - "+d.getBreedGroup());
         holder.dTemp.setText(d.getTemperament());
-        holder.dLifespan.setText(d.getLifespan());
+//        holder.dLifespan.setText(d.getLifespan());
     }
 
     @Override
@@ -54,19 +56,33 @@ public class DogAdapter extends RecyclerView.Adapter<DogAdapter.ViewHolder>{
         return dogList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ImageView dImage;
         public TextView dTitle;
-        public TextView dOrigin;
+//        public TextView dOrigin;
         public TextView dTemp;
-        public MaterialButton dLifespan;
+//        public MaterialButton dLifespan;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             dImage =  itemView.findViewById(R.id.image);
             dTitle = itemView.findViewById(R.id.tv_name);
-            dOrigin = itemView.findViewById(R.id.tv_origin);
+//            dOrigin = itemView.findViewById(R.id.tv_origin);
             dTemp = itemView.findViewById(R.id.tv_temp);
-            dLifespan = itemView.findViewById(R.id.btn_lifespan);
+//            dLifespan = itemView.findViewById(R.id.btn_lifespan);
         }
+
+        @Override
+        public void onClick(View view) {
+            clickListener.onItemClick(getAdapterPosition(), view);
+        }
+    }
+
+    public void setOnItemClickListener(ClickListener clickListener) {
+        DogAdapter.clickListener = clickListener;
+    }
+
+    public interface ClickListener {
+        void onItemClick(int position, View v);
     }
 }

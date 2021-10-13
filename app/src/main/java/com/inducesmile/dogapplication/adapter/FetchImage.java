@@ -14,7 +14,7 @@ public class FetchImage extends Thread{
     Handler handler;
     ImageView image;
 
-    FetchImage(String URL, ImageView image, Handler handler){
+    public FetchImage(String URL, ImageView image, Handler handler){
         this.URL = URL;
         this.image = image;
         this.handler = handler;

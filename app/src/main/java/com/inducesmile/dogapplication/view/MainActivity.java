@@ -33,19 +33,17 @@ public class MainActivity extends AppCompatActivity {
         View viewRoot = binding.getRoot();
         setContentView(viewRoot);
 
-        binding.recycleviewListdog.setLayoutManager(new LinearLayoutManager(this));
-
-        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
-        viewModel.getData().observe(this, new Observer<List<Dog>>() {
-            @Override
-            public void onChanged(List<Dog> dogs) {
-                dataset = dogs;
-                adapter = new DogAdapter(dataset);
-                binding.recycleviewListdog.setAdapter(adapter);
-
-            }
-        });
-
-
+//        binding.recycleviewListdog.setLayoutManager(new LinearLayoutManager(this));
+//
+//        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+//        viewModel.getData().observe(this, new Observer<List<Dog>>() {
+//            @Override
+//            public void onChanged(List<Dog> dogs) {
+//                dataset = dogs;
+//                adapter = new DogAdapter(dataset);
+//                binding.recycleviewListdog.setAdapter(adapter);
+//
+//            }
+//        });
     }
 }

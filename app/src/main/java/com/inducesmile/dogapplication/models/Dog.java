@@ -1,8 +1,11 @@
 package com.inducesmile.dogapplication.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Dog {
+public class Dog implements Parcelable {
     @SerializedName("id")
     private int id;
     @SerializedName("name")
@@ -19,6 +22,10 @@ public class Dog {
     private String bredFor;
     @SerializedName("breed_group")
     private String breedGroup;
+    @SerializedName("weight")
+    private Weight weight;
+    @SerializedName("height")
+    private Height height;
 
     public Dog(int id, String name, String origin, String lifespan, String temperament, String imageURL, String bredFor, String breedGroup) {
         this.id = id;
@@ -30,6 +37,29 @@ public class Dog {
         this.bredFor = bredFor;
         this.breedGroup = breedGroup;
     }
+
+    protected Dog(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        origin = in.readString();
+        lifespan = in.readString();
+        temperament = in.readString();
+        imageURL = in.readString();
+        bredFor = in.readString();
+        breedGroup = in.readString();
+    }
+
+    public static final Creator<Dog> CREATOR = new Creator<Dog>() {
+        @Override
+        public Dog createFromParcel(Parcel in) {
+            return new Dog(in);
+        }
+
+        @Override
+        public Dog[] newArray(int size) {
+            return new Dog[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -96,5 +126,38 @@ public class Dog {
 
     public void setBredFor(String bredFor) {
         this.bredFor = bredFor;
+    }
+
+    public Height getHeight() {
+        return height;
+    }
+
+    public void setHeight(Height height) {
+        this.height = height;
+    }
+
+    public Weight getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Weight weight) {
+        this.weight = weight;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(origin);
+        parcel.writeString(lifespan);
+        parcel.writeString(temperament);
+        parcel.writeString(imageURL);
+        parcel.writeString(bredFor);
+        parcel.writeString(breedGroup);
     }
 }
