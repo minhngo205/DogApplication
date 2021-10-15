@@ -1,6 +1,13 @@
 package com.inducesmile.dogapplication.view;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
+import android.app.Application;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +25,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private MainActivityViewModel viewModel;
-    private static final String TAG = "MainActivity";
-
-    private List<Dog> dataset;
-    private DogAdapter adapter;
 
     private ActivityMainBinding binding;
 
@@ -32,18 +35,5 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View viewRoot = binding.getRoot();
         setContentView(viewRoot);
-
-//        binding.recycleviewListdog.setLayoutManager(new LinearLayoutManager(this));
-//
-//        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
-//        viewModel.getData().observe(this, new Observer<List<Dog>>() {
-//            @Override
-//            public void onChanged(List<Dog> dogs) {
-//                dataset = dogs;
-//                adapter = new DogAdapter(dataset);
-//                binding.recycleviewListdog.setAdapter(adapter);
-//
-//            }
-//        });
     }
 }

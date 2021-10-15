@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.inducesmile.dogapplication.R;
-import com.inducesmile.dogapplication.adapter.FetchImage;
+import com.inducesmile.dogapplication.database.entities.DogEntity;
+import com.inducesmile.dogapplication.utils.FetchImage;
 import com.inducesmile.dogapplication.databinding.FragmentDetailBinding;
 import com.inducesmile.dogapplication.models.Dog;
 
@@ -23,7 +23,7 @@ public class DetailFragment extends Fragment {
 
     private FragmentDetailBinding detailBinding;
     private Handler loadIMGHandler;
-    private Dog dog;
+    private DogEntity dog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,6 @@ public class DetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         detailBinding = FragmentDetailBinding.inflate(inflater,container,false);
         detailBinding.setDog(dog);
-        Log.d(TAG, "onCreateView: "+dog.getImageURL());
         new FetchImage(dog.getImageURL(),detailBinding.dogImage,loadIMGHandler).start();
         // Inflate the layout for this fragment
         return detailBinding.getRoot();

@@ -3,10 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Other/AndroidProject/DogApplication/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.23385416666666667" />
         <entry key="..\:/Other/AndroidProject/DogApplication/app/src/main/res/layout/activity_main.xml" value="0.20260416666666667" />
         <entry key="..\:/Other/AndroidProject/DogApplication/app/src/main/res/layout/dog_item.xml" value="0.33" />
+        <entry key="..\:/Other/AndroidProject/DogApplication/app/src/main/res/layout/dog_item_detail.xml" value="0.21770833333333334" />
         <entry key="..\:/Other/AndroidProject/DogApplication/app/src/main/res/layout/fragment_detail.xml" value="0.3351449275362319" />
         <entry key="..\:/Other/AndroidProject/DogApplication/app/src/main/res/layout/fragment_list.xml" value="0.3351449275362319" />
+        <entry key="..\:/Other/AndroidProject/DogApplication/app/src/main/res/menu/search_menu.xml" value="0.21770833333333334" />
         <entry key="..\:/Other/AndroidProject/DogApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.38796296296296295" />
       </map>
     </option>

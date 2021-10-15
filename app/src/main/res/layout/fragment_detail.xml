@@ -5,7 +5,7 @@
     tools:context=".view.DetailFragment">
 
     <data>
-        <variable name="Dog" type="com.inducesmile.dogapplication.models.Dog"/>
+        <variable name="Dog" type="com.inducesmile.dogapplication.database.entities.DogEntity"/>
     </data>
 
     <FrameLayout
@@ -197,7 +197,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="20dp"
                             android:textSize="20dp"
-                            android:text="@{Dog.getHeight().getMetric()}"/>
+                            android:text="@{Dog.getHeightMetric()}"/>
                         <TextView
                             android:textStyle="bold"
                             android:layout_gravity="center_vertical"
@@ -205,7 +205,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="20dp"
                             android:textSize="20dp"
-                            android:text="@{Dog.getHeight().getImperial()}"/>
+                            android:text="@{Dog.getHeightImperial()}"/>
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -231,7 +231,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="20dp"
                             android:textSize="20dp"
-                            android:text="@{Dog.getWeight().getMetric()}"/>
+                            android:text="@{Dog.getWeightMetric()}"/>
                         <TextView
                             android:textStyle="bold"
                             android:layout_gravity="center_vertical"
@@ -239,7 +239,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="20dp"
                             android:textSize="20dp"
-                            android:text="@{Dog.getWeight().getImperial()}"/>
+                            android:text="@{Dog.getWeightImperial()}"/>
 
                     </LinearLayout>
                 </LinearLayout>

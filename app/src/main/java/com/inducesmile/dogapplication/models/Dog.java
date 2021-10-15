@@ -1,9 +1,20 @@
 package com.inducesmile.dogapplication.models;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.AsyncTask;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.ImageView;
 
 import com.google.gson.annotations.SerializedName;
+import com.inducesmile.dogapplication.database.entities.DogEntity;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 public class Dog implements Parcelable {
     @SerializedName("id")
@@ -78,7 +89,6 @@ public class Dog implements Parcelable {
     }
 
     public String getOrigin() {
-        if(origin==null || origin.isEmpty()) return "Unknown origin";
         return origin;
     }
 
@@ -111,7 +121,6 @@ public class Dog implements Parcelable {
     }
 
     public String getBreedGroup() {
-        if(breedGroup==null || breedGroup.isEmpty()) return "Unknown breed group";
         return breedGroup;
     }
 
@@ -120,7 +129,6 @@ public class Dog implements Parcelable {
     }
 
     public String getBredFor() {
-        if(bredFor==null || bredFor.isEmpty()) return "Unknown bred for";
         return bredFor;
     }
 
@@ -159,5 +167,22 @@ public class Dog implements Parcelable {
         parcel.writeString(imageURL);
         parcel.writeString(bredFor);
         parcel.writeString(breedGroup);
+    }
+
+    public DogEntity casToEntity(){
+        return new DogEntity(
+                getId(),
+                getName(),
+                getOrigin(),
+                getLifespan(),
+                getTemperament(),
+                getBredFor(),
+                getBreedGroup(),
+                getWeight().getMetric(),
+                getWeight().getImperial(),
+                getHeight().getMetric(),
+                getHeight().getImperial(),
+                getImageURL()
+        );
     }
 }
